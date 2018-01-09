@@ -1,39 +1,24 @@
 ﻿using System;
-namespace Program1
+using System.IO;
+
+namespace Program2
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please input random number: ");
-            var inputNumber = 0;
-            var counter = 0;
-
-            var random= new Random();
-            int randomNumber = random.Next(1, 101);
-            Console.WriteLine(randomNumber);
-            do
+            using (FileStream fs = new FileStream("Myfile.txt", FileMode.Create)) 
             {
-                inputNumber = int.Parse(Console.ReadLine());
-                counter++;
-                if (inputNumber > randomNumber)
+                using (StreamWriter wr = new StreamWriter(fs))
                 {
-                    Console.WriteLine("Down");
-                }
-
-                else if (inputNumber < randomNumber)
-                {
-                    Console.WriteLine("Up");
-                }
-
-                if (inputNumber == randomNumber)
-                {
-                    Console.WriteLine("You win!");
-                    Console.WriteLine("You win {0} tries!", counter);
-
+                    for (int i = 0; i <= 1000; i++)
+                    {
+                        string s = i + "." + "Shte programiram po 6 chasa na sedmica!";
+                        Console.WriteLine(s);
+                        wr.WriteLine(s);
+                    }
                 }
             }
-            while (inputNumber != randomNumber);
         }
     }
 }
