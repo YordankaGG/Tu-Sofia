@@ -1,24 +1,21 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
-namespace Program2
+namespace Homework
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
-            using (FileStream fs = new FileStream("Myfile.txt", FileMode.Create)) 
-            {
-                using (StreamWriter wr = new StreamWriter(fs))
-                {
-                    for (int i = 0; i <= 1000; i++)
-                    {
-                        string s = i + "." + "Shte programiram po 6 chasa na sedmica!";
-                        Console.WriteLine(s);
-                        wr.WriteLine(s);
-                    }
-                }
-            }
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
         }
     }
 }
